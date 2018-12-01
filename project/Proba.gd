@@ -27,3 +27,7 @@ func hola_uri():
 func hola_ruben_2():
 	#ojala
 	pass
+
+func auywdbjdjaw():
+	#kjfjawd
+	pass
