@@ -1,9 +1,20 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Tuberia.tscn" type="PackedScene" id=2]
 
 [node name="field" type="Node" index="0"]
 
 [node name="Player" parent="." index="0" instance=ExtResource( 1 )]
+
+position = Vector2( 199.004, 606.413 )
+
+[node name="Tuberia" parent="." index="1" instance=ExtResource( 2 )]
+
+position = Vector2( -258.116, 536.881 )
+
+[node name="Tuberia2" parent="." index="2" instance=ExtResource( 2 )]
+
+position = Vector2( -258.116, 707.237 )
 
 
