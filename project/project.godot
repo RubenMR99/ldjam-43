@@ -13,6 +13,14 @@ config_version=3
 config/name="project"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=1920
+window/size/height=1080
+window/size/test_width=640
+window/size/test_height=360
+window/stretch/aspect="keep_height"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
