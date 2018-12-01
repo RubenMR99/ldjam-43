@@ -10,12 +10,12 @@ func _ready():
 	
 
 func comproba_buttons():
-	if(GlobalVar.blood_rec != 100):
+	if(GlobalVar.blood_rec < 100):
 		$Buttons/T_attack.disabled = true;
 	else:
 		$Buttons/T_attack.disabled = false;
 	
-	if(GlobalVar.fat_rec != 100):
+	if(GlobalVar.fat_rec >= 100):
 		$Buttons/T_defend.disabled = true;
 	else:
 		$Buttons/T_defend.disabled = false;
@@ -26,6 +26,7 @@ func _on_T_attack_pressed():
 	GlobalVar.blood_rec = 0;
 	get_parent().update_HUD();
 	comproba_buttons();
+	$Enemy.atacar(75);
 
 func _on_T_defend_pressed():
 	$T_defend.entrar();

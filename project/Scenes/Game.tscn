@@ -5,14 +5,13 @@
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 300.0
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=2]
 
-resource_name = "moure_dreta"
 length = 1.0
 loop = false
 step = 0.1
@@ -41,9 +40,8 @@ tracks/1/keys = {
 "values": [ Vector2( 56, 872 ), Vector2( 1976, 872 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 
-resource_name = "moure_esquerra"
 length = 1.0
 loop = false
 step = 0.1
@@ -123,7 +121,6 @@ position = Vector2( 1712.2, 606.207 )
 
 [node name="Licuadora" type="Node2D" parent="." index="4"]
 
-editor/display_folded = true
 position = Vector2( 1184.17, 954.383 )
 __meta__ = {
 "_edit_group_": true
@@ -141,7 +138,7 @@ audio_bus_name = "Master"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Licuadora/Area2D" index="0"]
 
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Camera" type="Camera2D" parent="." index="5"]
 
@@ -261,8 +258,8 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/moure_dreta = SubResource( 1 )
-anims/moure_esquerra = SubResource( 2 )
+anims/moure_dreta = SubResource( 2 )
+anims/moure_esquerra = SubResource( 3 )
 blend_times = [  ]
 
 [connection signal="pressed" from="factoryButton" to="." method="_on_factoryButton_pressed"]
