@@ -17,3 +17,8 @@ func _ready():
 func hola_ruben():
 	#aojfnawkjdnawk
 	pass
+	
+
+func hola_uri():
+	#jeje
+	pass
