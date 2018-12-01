@@ -13,6 +13,10 @@ config_version=3
 config/name="project"
 config/icon="res://icon.png"
 
+[autoload]
+
+GlobalVar="*res://Scripts/GlobalVar.gd"
+
 [display]
 
 window/size/width=1920

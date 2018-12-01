@@ -1,9 +1,14 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Game.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/field.tscn" type="PackedScene" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CircleShape2D" id=3]
+
+custom_solver_bias = 0.0
+radius = 300.0
 
 [sub_resource type="Animation" id=1]
 
@@ -22,6 +27,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 1920, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HUD:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 56, 872 ), Vector2( 1976, 872 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -52,8 +69,83 @@ script = ExtResource( 1 )
 position = Vector2( 1920, 0 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Camera" type="Camera2D" parent="." index="1"]
+[node name="factoryButton" type="TextureButton" parent="." index="1"]
 
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1728.0
+margin_right = 1792.0
+margin_bottom = 64.0
+rect_scale = Vector2( 3, 2 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 3 )
+_sections_unfolded = [ "Rect", "Textures" ]
+
+[node name="fieldButton" type="TextureButton" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1920.0
+margin_right = 1984.0
+margin_bottom = 64.0
+rect_scale = Vector2( 3, 2 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 3 )
+_sections_unfolded = [ "Rect", "Textures" ]
+
+[node name="Player" parent="." index="3" instance=ExtResource( 4 )]
+
+position = Vector2( 1712.2, 606.207 )
+
+[node name="Licuadora" type="Node2D" parent="." index="4"]
+
+editor/display_folded = true
+position = Vector2( 1184.17, 954.383 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Licuadora" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Licuadora/Area2D" index="0"]
+
+shape = SubResource( 3 )
+
+[node name="Camera" type="Camera2D" parent="." index="5"]
+
+editor/display_folded = true
 anchor_mode = 0
 rotating = false
 current = false
@@ -78,7 +170,91 @@ editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="anim" type="AnimationPlayer" parent="Camera" index="0"]
+[node name="HUD" type="Node2D" parent="Camera" index="0"]
+
+editor/display_folded = true
+position = Vector2( 59.7948, 784.72 )
+scale = Vector2( 1.5, 1.5 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Meat" type="ProgressBar" parent="Camera/HUD" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 440.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+percent_visible = true
+_sections_unfolded = [ "Rect" ]
+
+[node name="Fat" type="ProgressBar" parent="Camera/HUD" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 60.0
+margin_right = 440.0
+margin_bottom = 92.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+percent_visible = true
+_sections_unfolded = [ "Rect" ]
+
+[node name="Blood" type="ProgressBar" parent="Camera/HUD" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 120.0
+margin_right = 440.0
+margin_bottom = 152.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+percent_visible = true
+_sections_unfolded = [ "Rect" ]
+
+[node name="anim" type="AnimationPlayer" parent="Camera" index="1"]
 
 root_node = NodePath("..")
 autoplay = ""
@@ -88,60 +264,6 @@ playback_speed = 1.0
 anims/moure_dreta = SubResource( 1 )
 anims/moure_esquerra = SubResource( 2 )
 blend_times = [  ]
-
-[node name="factoryButton" type="TextureButton" parent="." index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 1728.0
-margin_right = 1792.0
-margin_bottom = 64.0
-rect_scale = Vector2( 3, 2 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 3 )
-_sections_unfolded = [ "Rect", "Textures" ]
-
-[node name="fieldButton" type="TextureButton" parent="." index="3"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 1920.0
-margin_right = 1984.0
-margin_bottom = 64.0
-rect_scale = Vector2( 3, 2 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 3 )
-_sections_unfolded = [ "Rect", "Textures" ]
-
-[node name="Player" parent="." index="4" instance=ExtResource( 4 )]
-
-position = Vector2( 1712.2, 606.207 )
-
-[connection signal="animation_finished" from="Camera/anim" to="." method="_on_anim_animation_finished"]
 
 [connection signal="pressed" from="factoryButton" to="." method="_on_factoryButton_pressed"]
 
