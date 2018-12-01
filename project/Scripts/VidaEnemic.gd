@@ -15,9 +15,9 @@ func update_barres():
 	$Cops.text = String(aux);
 	if _vida < 100:
 		$image_interior.modulate = (Color(0,0,0));
+	else:
+		$image_interior.modulate = (Color(255,0,0));
 
 func dibuixar(vida):
 	_vida = vida;
-	if _vida > 100:
-		$image_interior.modulate = (Color(255,0,0));
 	update_barres();
