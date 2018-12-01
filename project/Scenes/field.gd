@@ -8,8 +8,6 @@ func _ready():
 	$T_attack.inicialitzar_sprites("BLOOD");
 	$T_defend.inicialitzar_sprites("DEFEND");
 
-
-
 func _on_T_attack_pressed():
 	$T_attack.entrar();
 
