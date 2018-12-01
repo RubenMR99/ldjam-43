@@ -23,5 +23,7 @@ func hola_uri():
 	#jeje
 	pass
 	
-func momas_tolina():
+
+func hola_ruben_2():
+	#ojala
 	pass
