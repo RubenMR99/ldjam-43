@@ -22,3 +22,6 @@ func hola_ruben():
 func hola_uri():
 	#jeje
 	pass
+	
+func momas_tolina():
+	pass
