@@ -67,7 +67,11 @@ position = Vector2( 1708.33, 603.989 )
 [node name="Buttons" type="Node2D" parent="." index="3"]
 
 editor/display_folded = true
-position = Vector2( 1417.78, 899.183 )
+position = Vector2( 862.755, 920.152 )
+scale = Vector2( 1, 1.00172 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="T_attack" type="Button" parent="Buttons" index="0"]
 
