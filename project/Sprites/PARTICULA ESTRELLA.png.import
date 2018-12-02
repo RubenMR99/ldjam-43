@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/FONDO FUERA.jpg-a98317338cc82866008fba867d8baf33.stex"
+path="res://.import/PARTICULA ESTRELLA.png-4415a939195d898395536bdada09bd96.stex"
 
 [deps]
 
-source_file="res://Sprites/Field/FONDO FUERA.jpg"
-dest_files=[ "res://.import/FONDO FUERA.jpg-a98317338cc82866008fba867d8baf33.stex" ]
+source_file="res://Sprites/PARTICULA ESTRELLA.png"
+dest_files=[ "res://.import/PARTICULA ESTRELLA.png-4415a939195d898395536bdada09bd96.stex" ]
 
 [params]
 

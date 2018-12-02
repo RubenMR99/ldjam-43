@@ -2,24 +2,36 @@ extends Node
 
 var escut = preload("res://Scenes/Escut.tscn");
 
+var shake_amount = 0;
+
 func _ready():
 	$Camera.make_current();
 	$Player/Sprite.flip_h = true;
 	update_HUD();
 
 func update_HUD():
-	$Camera/HUD/Meat.value = GlobalVar.meat_rec;
 	$Camera/HUD/Blood.value = GlobalVar.blood_rec;
 	$Camera/HUD/Fat.value = GlobalVar.fat_rec;
-	$Camera/HUD.dibuixar_vida(GlobalVar.vida);
+	$Camera/HUD.dibuixar_vida();
 	$field/pompa.colocar(GlobalVar.escut);
 
 func _process(delta):
-	GlobalVar.meat_rec += 0.5;
 	GlobalVar.blood_rec += 0.5;
 	GlobalVar.fat_rec += 0.5;
 	update_HUD();
+	if Input.is_action_pressed("ui_up"):
+		screen_shake(0.5);
+	
 	$field.comproba_buttons();
+	if shake_amount >= 0:
+		$Camera.set_offset(Vector2( 
+			rand_range(-1.0, 1.0) * shake_amount, 
+			rand_range(-1.0, 1.0) * shake_amount 
+		))
+		shake_amount -= 0.1;
+	
+	if GlobalVar.vida <= 0:
+		pass
 
 func _on_factoryButton_pressed():
 	$Camera/anim.play("moure_dreta");
@@ -69,3 +81,6 @@ func _on_enemy_attacking(damage):
 
 func _on_enemy_killed():
 	pass
+
+func screen_shake(valor):
+	shake_amount += valor;

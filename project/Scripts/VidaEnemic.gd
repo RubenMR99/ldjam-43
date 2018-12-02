@@ -16,7 +16,6 @@ func update_barres():
 	else:
 		$Primera/one.value = int(_vida%100);
 	
-	$Cops.text = String(aux);
 	if _vida < 100:
 		$image_interior.set_texture(bk);
 	else:

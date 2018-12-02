@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/FACHADA+PUERTA2ESCENARIO.png-442eaebb486afa3fc8946850fa4a31ab.stex"
+path="res://.import/gameover.png-c3c6df9f769ab09903b0028b1034e54c.stex"
 
 [deps]
 
-source_file="res://Sprites/Field/FACHADA+PUERTA2ESCENARIO.png"
-dest_files=[ "res://.import/FACHADA+PUERTA2ESCENARIO.png-442eaebb486afa3fc8946850fa4a31ab.stex" ]
+source_file="res://Sprites/gameover.png"
+dest_files=[ "res://.import/gameover.png-c3c6df9f769ab09903b0028b1034e54c.stex" ]
 
 [params]
 

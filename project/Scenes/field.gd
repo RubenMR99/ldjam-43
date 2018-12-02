@@ -35,4 +35,5 @@ func _on_T_defend_pressed():
 func _on_incoming_attack():
 	if GlobalVar.pos == "factory":
 		$vigila/anim.play("apareixer_vigila");
+		yield(get_tree().create_timer(1), "timeout");
 		get_parent()._on_factoryButton_pressed();
