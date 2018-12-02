@@ -1,9 +1,5 @@
 extends Node2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-
 signal shield;
 
 func _ready():
@@ -18,10 +14,10 @@ func comproba_buttons():
 	else:
 		$Buttons/T_attack.disabled = false;
 	
-	if(GlobalVar.fat_rec < 100):
-		$Buttons/T_defend.disabled = true;
-	else:
+	if(GlobalVar.fat_rec >= 100 and GlobalVar.escut < 3):
 		$Buttons/T_defend.disabled = false;
+	else:
+		$Buttons/T_defend.disabled = true;
 
 
 func _on_T_attack_pressed():

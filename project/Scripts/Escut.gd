@@ -1,6 +1,6 @@
 extends Node2D
 
-var velocity = 0.1;
+var velocity = 0.01;
 signal no_time;
 
 func _ready():

@@ -11,6 +11,8 @@ func update_HUD():
 	$Camera/HUD/Meat.value = GlobalVar.meat_rec;
 	$Camera/HUD/Blood.value = GlobalVar.blood_rec;
 	$Camera/HUD/Fat.value = GlobalVar.fat_rec;
+	$Camera/HUD.dibuixar_vida(GlobalVar.vida);
+	$field/pompa.colocar(GlobalVar.escut);
 
 func _process(delta):
 	GlobalVar.meat_rec += 0.5;
@@ -34,27 +36,38 @@ func _on_fieldButton_pressed():
 	GlobalVar.pos = "factory";
 
 func _activa_escut():
-	print("l");
 	var s = escut.instance();
 	s.position.x = 0 + GlobalVar.escut * 65;
 	GlobalVar.escut += 1;
 	s.position.y = 100;
 	$Camera/HUD/Cont.add_child(s);
+	$field/pompa.colocar(GlobalVar.escut);
 
 func _run_out_shield():
-	print("yay")
 	GlobalVar.escut -= 1;
 	for node in $Camera/HUD/Cont.get_children():
 		node.position.x -= 65;
+		if(node.position.x < -10):
+			node.queue_free();
+	$field/pompa.colocar(GlobalVar.escut);
 
-func _on_enemy_attacking():
-	print("x");
+func _on_enemy_attacking(damage):
+	var aux = GlobalVar.escut - damage;
+	
+	if aux <= 0:
+		for node in $Camera/HUD/Cont.get_children():
+			node.queue_free();
+		GlobalVar.vida += aux;
+		for i in range(GlobalVar.escut):
+			_run_out_shield();
+	else:
+		for i in range(damage):
+			_run_out_shield();
+	update_HUD();
 
 func _on_incoming_damage():
-	print("o");
 	if GlobalVar.pos == "factory":
 		$field/vigila/anim.play("apareixer_vigila");
 
 func _on_enemy_killed():
-	print("k");
 	$field/Enemy.inicialitzar_nou_enemic();
