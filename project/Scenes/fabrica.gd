@@ -46,4 +46,3 @@ func agafar(body):
 			body.es_pot_agafar = true
 		else:
 			body.es_pot_agafar = false
-	print(agafat_obj)
