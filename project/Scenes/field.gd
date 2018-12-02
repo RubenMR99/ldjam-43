@@ -4,9 +4,12 @@ extends Node2D
 # var a = 2
 # var b = "textvar"
 
+signal shield;
+
 func _ready():
 	$T_attack.inicialitzar_sprites("BLOOD");
 	$T_defend.inicialitzar_sprites("DEFEND");
+	self.connect("shield", get_parent(), "_activa_escut");
 	
 
 func comproba_buttons():
@@ -15,7 +18,7 @@ func comproba_buttons():
 	else:
 		$Buttons/T_attack.disabled = false;
 	
-	if(GlobalVar.fat_rec >= 100):
+	if(GlobalVar.fat_rec < 100):
 		$Buttons/T_defend.disabled = true;
 	else:
 		$Buttons/T_defend.disabled = false;
@@ -31,5 +34,7 @@ func _on_T_attack_pressed():
 func _on_T_defend_pressed():
 	$T_defend.entrar();
 	GlobalVar.fat_rec = 0;
+	emit_signal("shield");
 	get_parent().update_HUD();
 	comproba_buttons();
+	

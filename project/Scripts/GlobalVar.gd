@@ -1,8 +1,10 @@
 extends Node
 
-const MAX_PERSONAS = 5
+const MAX_PERSONAS = 5;
+var contador_personas = 0;
 
-var contador_personas = 0
+var vida = 3;
+var escut = 0;
 var meat_rec;
 var fat_rec;
 var blood_rec;
