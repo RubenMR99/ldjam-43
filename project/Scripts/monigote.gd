@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+var movent = true
 var asobre = false
 var clicant = false
 var clicant_ant = false
@@ -15,13 +16,11 @@ var pos_inicial = Vector2()
 var pos_calderon = Vector2()
 
 func _on_KinematicBody2D_mouse_entered():
-	print("entra del moñeco")
 	asobre = true
 	clicant_ant = false
 
 
 func _on_KinematicBody2D_mouse_exited():
-	print("fora del moñeco")
 	if (not clicant):
 		asobre = false
 
@@ -31,33 +30,39 @@ func _physics_process(delta):
 		next_scale = scale_1
 	else:
 		next_scale = scale_d
+
 	if (asobre and clicant):
-		position = get_global_mouse_position()
-		next_scale = scale_2
+		agafar()
 		clicant_ant = true
 	elif(asobre and clicant_ant):
 		deixat_anar = true
-		print("has deixat anar")
+	
 	if (deixat_anar and not entra_deixar):
-		position.y = lerp(position.y, pos_inicial.y, 0.1);
-		position.x = lerp(position.x, pos_inicial.x, 0.1);
-		#position = pos_inicial
-		if(position.y == pos_inicial.y):
-			deixat_anar = false;
+		deixar_anar()
 	elif(entra_deixar and not clicant):
-		print("sweet spot")
+		eliminar()
+	
 	scale.y = lerp(scale.y, next_scale.y, 0.2);
 	scale.x = lerp(scale.x, next_scale.x, 0.2);
-	if (not clicant and not deixat_anar):
+	
+	if (movent):
 		pos_inicial = position
+		position.y = position.y + 1
 
+func agafar():
+	position = get_global_mouse_position()
+	next_scale = scale_2
 
-func _on_Area2D_body_shape_entered(body_id, body, body_shape, area_shape):
-	entra_deixar = true
-	print("dentro area")
+func deixar_anar():
+	position.y = lerp(position.y, pos_inicial.y, 0.1);
+	position.x = lerp(position.x, pos_inicial.x, 0.1);
+	#position = pos_inicial
+	if(position.y  == pos_inicial.y):
+		deixat_anar = false;
 
-
-func _on_Area2D_body_shape_exited(body_id, body, body_shape, area_shape):
-
-	entra_deixar = false
-	print("fora area")
+func eliminar():
+	if (not clicant):
+		print("sweet spot")
+		queue_free()
+		entra_deixar = false
+		GlobalVar.contador_personas -= 1
