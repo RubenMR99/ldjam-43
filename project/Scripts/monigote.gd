@@ -48,7 +48,6 @@ func _physics_process(delta):
 
 	if (asobre and clicant and es_pot_agafar):
 		agafar()
-		print(self)
 	elif(asobre and clicant_ant):
 		deixat_anar = true
 	if (deixat_anar and not entra_deixar):

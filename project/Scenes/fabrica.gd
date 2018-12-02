@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 # class member variables go here, for example:
 # var a = 2
@@ -36,7 +36,6 @@ func comp_agafar(body):
 		return false
 
 func agafar(body):
-	print(body)
 	if (agafats < 1):
 		body.es_pot_agafar = true
 		agafat_obj = body
