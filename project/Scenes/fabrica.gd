@@ -48,3 +48,9 @@ func agafar(body):
 			body.es_pot_agafar = true
 		else:
 			body.es_pot_agafar = false
+			
+func stop_sang():
+	pass
+
+func start_sang():
+	pass

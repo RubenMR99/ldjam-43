@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/fabrica.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/FondoFabricaV4.jpg" type="Texture" id=2]
 [ext_resource path="res://Scripts/Tuberia.gd" type="Script" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/CINTA CON SANGRE.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/licuador.png" type="Texture" id=6]
-[ext_resource path="res://Scenes/persona.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/persona.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Sprites/LICUADORA3.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/ANIMACIÓN VALLA.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=2]
 
@@ -16,7 +17,7 @@ extents = Vector2( 32, 32 )
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 256, 64 )
+extents = Vector2( 224, 224 )
 
 [node name="Fabrica" type="Node2D" index="0"]
 
@@ -33,7 +34,8 @@ __meta__ = {
 
 [node name="Tuberia_M" type="Area2D" parent="." index="1"]
 
-position = Vector2( 1664, 128 )
+editor/display_folded = true
+position = Vector2( 448, 128 )
 scale = Vector2( 4, 4 )
 input_pickable = false
 gravity_vec = Vector2( 0, 1 )
@@ -65,11 +67,18 @@ scale = Vector2( 0.25, 0.25 )
 
 position = Vector2( 960, 544 )
 texture = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="Caldero" type="Area2D" parent="." index="3"]
+[node name="Persona Random" parent="." index="3" instance=ExtResource( 6 )]
+
+position = Vector2( 1856, 512 )
+
+[node name="Caldero" type="Area2D" parent="." index="4"]
 
 editor/display_folded = true
-position = Vector2( 1664, 960 )
+position = Vector2( 1728, 1024 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -77,23 +86,28 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Caldero" index="0"]
 
-position = Vector2( -64, -256 )
+position = Vector2( -96, -160 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="Caldero" index="1"]
 
 position = Vector2( -64, -96 )
-scale = Vector2( 0.15394, 0.147421 )
-texture = ExtResource( 6 )
-_sections_unfolded = [ "Transform" ]
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 7 )
+flip_h = true
+_sections_unfolded = [ "Offset", "Transform" ]
 
-[node name="Persona Random" parent="." index="4" instance=ExtResource( 7 )]
+[node name="Valla" type="Sprite" parent="." index="5"]
 
-position = Vector2( 1856, 352 )
+position = Vector2( 1216, 800 )
+texture = ExtResource( 8 )
 
 [connection signal="body_entered" from="Caldero" to="." method="_on_Caldero_body_entered"]
 

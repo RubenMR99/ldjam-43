@@ -7,6 +7,7 @@ var clicant_ant = false
 var deixat_anar = false
 var entra_deixar = false
 var es_pot_agafar = false
+var morir = false
 
 var valor = 15;
 var tipus;
@@ -47,29 +48,41 @@ func _physics_process(delta):
 	pos_anterior = position
 	clicant = Input.is_action_pressed("click")
 	es_pot_agafar = get_parent().comp_agafar(self)
-	if (asobre and !clicant_ant and es_pot_agafar):
-		next_scale = scale_1
+	if (!morir):
+		if (asobre and !clicant_ant and es_pot_agafar):
+			next_scale = scale_1
+			z_index = 0
+		else:
+			next_scale = scale_d
+			z_index = 0
+	
+		if (asobre and clicant and es_pot_agafar):
+			agafar()
+		elif(asobre and clicant_ant):
+			deixat_anar = true
+		if (deixat_anar and not entra_deixar):
+			deixar_anar()
+		elif(entra_deixar and not clicant and deixat_anar):
+			eliminar()
+		
+		scale.y = lerp(scale.y, next_scale.y, 0.2);
+		scale.x = lerp(scale.x, next_scale.x, 0.2);
+		
+		if (movent and !get_parent().stop):
+			position = guia(position)
+			pos_inicial = position
+		elif (!get_parent().stop):
+			pos_inicial = guia(pos_inicial)
 	else:
-		next_scale = scale_d
-
-	if (asobre and clicant and es_pot_agafar):
-		agafar()
-	elif(asobre and clicant_ant):
-		deixat_anar = true
-	if (deixat_anar and not entra_deixar):
-		deixar_anar()
-	elif(entra_deixar and not clicant and deixat_anar):
-		eliminar()
-	
-	scale.y = lerp(scale.y, next_scale.y, 0.2);
-	scale.x = lerp(scale.x, next_scale.x, 0.2);
-	
-	if (movent and !get_parent().stop):
-		position = guia(position)
-		pos_inicial = position
-	elif (!get_parent().stop):
-		pos_inicial = guia(pos_inicial)
-
+		scale.y = lerp(scale.y, 0, 0.2);
+		scale.x = lerp(scale.x, 0, 0.2);
+		position.y = lerp(position.y, 736, 0.1);
+		position.x = lerp(position.x, 1632, 0.1);
+		z_index = 10
+		
+		if (scale.y == 0):
+			queue_free()
+			get_parent().stop_sang()
 func guia(posicio_actual):
 	if (posicio_actual.y < p_1.y and stage == 0):
 		posicio_actual.y += 3
@@ -97,6 +110,7 @@ func agafar():
 	movent = false;
 	position = get_global_mouse_position()
 	next_scale = scale_2
+	z_index = 10
 	clicant_ant = true
 	$Cos.avancar_frame()
 
@@ -125,4 +139,5 @@ func eliminar():
 	GlobalVar.contador_personas -= 1
 	get_parent().stop = false;
 	get_parent().deixar_anar()
-	queue_free()
+	get_parent().start_sang()
+	morir = true

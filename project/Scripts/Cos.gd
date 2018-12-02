@@ -28,7 +28,6 @@ func _process(delta):
 	else:
 		rotacio_objectiu = 0;
 		$Sprite.rotation = lerp($Sprite.rotation, rotacio_objectiu, 0.5)
-		print($Sprite.rotation)
 func avancar_frame():
 	if (time > 1):
 		time = 0
