@@ -13,8 +13,10 @@ var _tipus;
 var _vida = 0;
 var _vida_inicial = 0;
 
+var one_time = false;
+
 func random_type():
-	var aux = 2#randi()%3;
+	var aux = 1#randi()%3;
 	match aux:
 		0:
 			$Sprite.set_texture(j);
@@ -29,15 +31,16 @@ func random_type():
 func _ready():
 	randomize();
 	self.connect("damage", get_parent().get_parent(), "_on_enemy_attacking");
-	self.connect("damage_incoming", get_parent().get_parent(), "_on_incoming_attack");
+	self.connect("damage_incoming", get_parent(), "_on_incoming_attack");
 	self.connect("killed", get_parent().get_parent(), "_on_enemy_killed");
 	inicialitzar_nou_enemic();
 
 func _process(delta):
 	$Carrega/ProgressBar.value += _velocity;
-	if($Carrega/ProgressBar.value == 90):
+	if($Carrega/ProgressBar.value >= 75 and not one_time):
 		emit_signal("damage_incoming");
 		print("damage_incoming");
+		one_time = true;
 	elif($Carrega/ProgressBar.value >= 100):
 		$Carrega/ProgressBar.value = 0;
 		_atacar();
@@ -51,9 +54,14 @@ func _atacar():
 			$Coin.restart();
 			yield(get_tree().create_timer(0.7), "timeout");
 			$Sprite/animacio.play_backwards("attack_mono");
-			
-	
+		"jutge":
+			$Sprite/animacio.play("attack_jutge");
+			yield(get_tree().create_timer(1), "timeout");
+		"poli":
+			$Sprite/animacio.play("attack_poli");
+			yield(get_tree().create_timer(1,5), "timeout");
 	set_process(true);
+	one_time = false;
 	emit_signal("damage", 1);
 
 func inicialitzar_nou_enemic():

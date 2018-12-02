@@ -6,7 +6,6 @@ func _ready():
 	$T_attack.inicialitzar_sprites("BLOOD");
 	$T_defend.inicialitzar_sprites("DEFEND");
 	self.connect("shield", get_parent(), "_activa_escut");
-	
 
 func comproba_buttons():
 	if(GlobalVar.blood_rec < 100):
@@ -18,7 +17,6 @@ func comproba_buttons():
 		$Buttons/T_defend.disabled = false;
 	else:
 		$Buttons/T_defend.disabled = true;
-
 
 func _on_T_attack_pressed():
 	$T_attack.entrar();
@@ -33,4 +31,8 @@ func _on_T_defend_pressed():
 	emit_signal("shield");
 	get_parent().update_HUD();
 	comproba_buttons();
-	
+
+func _on_incoming_attack():
+	if GlobalVar.pos == "factory":
+		$vigila/anim.play("apareixer_vigila");
+		get_parent()._on_factoryButton_pressed();

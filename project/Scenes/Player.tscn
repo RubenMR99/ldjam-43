@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/player/PrincipalSprite.png" type="Texture" id=1]
 
 [sub_resource type="Animation" id=1]
 
@@ -37,9 +37,9 @@ tracks/1/keys = {
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
-scale = Vector2( 2, 4 )
 texture = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
+hframes = 4
+_sections_unfolded = [ "Animation", "Offset", "Transform" ]
 
 [node name="animacio" type="AnimationPlayer" parent="Sprite" index="0"]
 

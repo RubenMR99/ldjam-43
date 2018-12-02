@@ -4,6 +4,7 @@ var escut = preload("res://Scenes/Escut.tscn");
 
 func _ready():
 	$Camera.make_current();
+	$Player/Sprite.flip_h = true;
 	update_HUD();
 
 func update_HUD():
@@ -26,6 +27,7 @@ func _on_factoryButton_pressed():
 	$Player/Sprite/animacio.play("ves_dreta");
 	$field.comproba_buttons();
 	GlobalVar.pos = "field";
+	$Player/Sprite.flip_h = false;
 
 func _on_fieldButton_pressed():
 	$Camera/anim.play("moure_esquerra");
@@ -33,6 +35,7 @@ func _on_fieldButton_pressed():
 	$Player/Sprite/animacio.play_backwards("ves_dreta");
 	$field.comproba_buttons();
 	GlobalVar.pos = "factory";
+	$Player/Sprite.flip_h = true;
 
 func _activa_escut():
 	var s = escut.instance();
@@ -63,9 +66,6 @@ func _on_enemy_attacking(damage):
 		for i in range(damage):
 			_run_out_shield();
 	update_HUD();
-
-func _on_incoming_damage():
-	$field/vigila/anim.play("apareixer_vigila");
 
 func _on_enemy_killed():
 	pass
