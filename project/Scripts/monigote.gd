@@ -19,6 +19,7 @@ var scale_d = Vector2(1,1)
 var scale_1 = Vector2(2,2)
 var scale_2 = Vector2(3,3)
 var next_scale = Vector2()
+var next_scale_cabezo = Vector2()
 var pos_inicial = Vector2()
 var pos_calderon = Vector2()
 
@@ -48,16 +49,19 @@ func _physics_process(delta):
 	pos_anterior = position
 	clicant = Input.is_action_pressed("click")
 	es_pot_agafar = get_parent().comp_agafar(self)
+	next_scale_cabezo = Vector2(1,1)
 	if (!morir):
 		if (asobre and !clicant_ant and es_pot_agafar):
-			next_scale = scale_1
+			next_scale_cabezo = scale_1
 			z_index = 0
 		else:
 			next_scale = scale_d
+			next_scale_cabezo = scale_d
 			z_index = 0
 	
 		if (asobre and clicant and es_pot_agafar):
 			agafar()
+			next_scale_cabezo = Vector2(1,1)
 		elif(asobre and clicant_ant):
 			deixat_anar = true
 		if (deixat_anar and not entra_deixar):
@@ -67,6 +71,9 @@ func _physics_process(delta):
 		
 		scale.y = lerp(scale.y, next_scale.y, 0.2);
 		scale.x = lerp(scale.x, next_scale.x, 0.2);
+		
+		$Cap.scale.y = lerp($Cap.scale.y, next_scale_cabezo.y, 0.2);
+		$Cap.scale.x = lerp($Cap.scale.x, next_scale_cabezo.x, 0.2);
 		
 		if (movent and !get_parent().stop):
 			position = guia(position)
@@ -83,6 +90,7 @@ func _physics_process(delta):
 		if (scale.y == 0):
 			queue_free()
 			get_parent().stop_sang()
+
 func guia(posicio_actual):
 	if (posicio_actual.y < p_1.y and stage == 0):
 		posicio_actual.y += 3

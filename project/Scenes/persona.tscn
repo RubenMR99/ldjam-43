@@ -5,10 +5,11 @@
 [ext_resource path="res://Sprites/Sacrificis/GorditaSpritesCuerpo.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Sacrificis/caps.png" type="Texture" id=4]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 64, 138.249 )
+radius = 9.01491
+height = 0.250759
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 
@@ -22,7 +23,8 @@ _sections_unfolded = [ "Collision", "Pickable", "Transform", "collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
-position = Vector2( 0.735077, 77.1453 )
+position = Vector2( 2.20265, 62.809 )
+scale = Vector2( 6.18579, 11.9715 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
@@ -39,7 +41,6 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, 30 )
 hframes = 3
-frame = 2
 _sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform", "Visibility", "Z Index" ]
 
 [node name="Cap" type="Sprite" parent="." index="2"]

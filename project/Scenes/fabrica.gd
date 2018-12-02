@@ -50,7 +50,9 @@ func agafar(body):
 			body.es_pot_agafar = false
 			
 func stop_sang():
+	$Sangre.emitting = false
 	pass
 
 func start_sang():
+	$Sangre.emitting = true
 	pass

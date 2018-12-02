@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/fabrica.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/FondoFabricaV4.jpg" type="Texture" id=2]
@@ -8,16 +8,57 @@
 [ext_resource path="res://Scenes/persona.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Sprites/LICUADORA3.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/ANIMACIÓN VALLA.png" type="Texture" id=8]
-
-[sub_resource type="RectangleShape2D" id=2]
-
-custom_solver_bias = 0.0
-extents = Vector2( 32, 32 )
+[ext_resource path="res://Sprites/gotasang.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
+extents = Vector2( 32, 32 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
 extents = Vector2( 224, 224 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 1
+emission_sphere_radius = 5.66
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 66.18
+flatness = 0.6
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 205.88
+initial_velocity_random = 0.19
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 22.06
+damping_random = 0.96
+angle = -190.6
+angle_random = 0.7
+scale = 0.01
+scale_random = 0.06
+color = Color( 0.324219, 0.0240631, 0.0240631, 1 )
+hue_variation = 0.0
+hue_variation_random = 0.59
+anim_speed = 1.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Color", "Damping", "Emission Shape", "Gravity", "Hue Variation", "Initial Velocity", "Linear Accel", "Orbit Velocity", "Radial Accel", "Scale", "Spread", "Tangential Accel", "Trail" ]
 
 [node name="Fabrica" type="Node2D" index="0"]
 
@@ -35,7 +76,7 @@ __meta__ = {
 [node name="Tuberia_M" type="Area2D" parent="." index="1"]
 
 editor/display_folded = true
-position = Vector2( 448, 128 )
+position = Vector2( 4752.88, 528.291 )
 scale = Vector2( 4, 4 )
 input_pickable = false
 gravity_vec = Vector2( 0, 1 )
@@ -56,7 +97,7 @@ texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tuberia_M" index="1"]
 
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Position2D" type="Position2D" parent="Tuberia_M" index="2"]
 
@@ -93,7 +134,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Caldero" index="0"]
 
 position = Vector2( -96, -160 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="Caldero" index="1"]
@@ -108,6 +149,30 @@ _sections_unfolded = [ "Offset", "Transform" ]
 
 position = Vector2( 1216, 800 )
 texture = ExtResource( 8 )
+
+[node name="Sangre" type="Particles2D" parent="." index="6"]
+
+position = Vector2( 1636.98, 689.617 )
+rotation = -1.5708
+emitting = false
+amount = 500
+lifetime = 6.0
+one_shot = true
+preprocess = 0.0
+speed_scale = 1.04
+explosiveness = 0.59
+randomness = 0.25
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+draw_order = 0
+process_material = SubResource( 3 )
+texture = ExtResource( 9 )
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Material", "Pause", "Process Material", "Textures", "Time", "Transform", "Z Index" ]
 
 [connection signal="body_entered" from="Caldero" to="." method="_on_Caldero_body_entered"]
 
