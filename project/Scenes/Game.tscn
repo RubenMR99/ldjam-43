@@ -111,6 +111,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Camera" type="Camera2D" parent="." index="2"]
 
+editor/display_folded = true
 anchor_mode = 0
 rotating = false
 current = false

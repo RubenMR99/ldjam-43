@@ -13,7 +13,7 @@ var tipus;
 var stage = 0;
 
 var target = Vector2()
-var velocity = Vector2()
+var pos_anterior = Vector2()
 var scale_d = Vector2(1,1)
 var scale_1 = Vector2(2,2)
 var scale_2 = Vector2(3,3)
@@ -39,6 +39,8 @@ func _on_KinematicBody2D_mouse_exited():
 		asobre = false
 
 func _physics_process(delta):
+	#rotation += 20
+	pos_anterior = position
 	clicant = Input.is_action_pressed("click")
 	es_pot_agafar = get_parent().comp_agafar(self)
 	if (asobre and !clicant_ant and es_pot_agafar):

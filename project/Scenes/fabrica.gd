@@ -17,11 +17,14 @@ func _process(delta):
 	pass
 
 func _on_Caldero_body_entered(body):
-	body.entrada_caldero();
+	if (body.get_class() == "KinematicBody2D"):
+		body.entrada_caldero();
 
 
 func _on_Caldero_body_exited(body):
-	body.sortida_caldero();
+	if (body.get_class() == "KinematicBody2D"):
+		body.sortida_caldero();
+	pass
 
 func deixar_anar():
 	agafats = 0
