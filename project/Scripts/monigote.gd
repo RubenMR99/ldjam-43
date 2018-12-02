@@ -21,10 +21,14 @@ var next_scale = Vector2()
 var pos_inicial = Vector2()
 var pos_calderon = Vector2()
 
-const p_1 = Vector2(0,640)
+const p_1 = Vector2(0,550)
 const p_2 = Vector2(384,0)
-const p_3 = Vector2(0,832)
+const p_3 = Vector2(0,690)
 const p_4 = Vector2(896,0)
+
+func _ready():
+	var n_aleatori = randi() % 2
+	$Cap.frame = n_aleatori
 
 func asignar(tipus_n):
 	tipus = tipus_n
@@ -94,6 +98,7 @@ func agafar():
 	position = get_global_mouse_position()
 	next_scale = scale_2
 	clicant_ant = true
+	$Cos.avancar_frame()
 
 func deixar_anar():
 	position.y = lerp(position.y, pos_inicial.y, 0.1);

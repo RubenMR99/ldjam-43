@@ -3,16 +3,16 @@
 [ext_resource path="res://Scripts/monigote.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Cos.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/Sacrificis/GorditaSpritesCuerpo.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Sacrificis/GorditaSpritesCabeza.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Sacrificis/caps.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 64, 138.249 )
 
-[node name="KinematicBody2D" type="KinematicBody2D"]
+[node name="KinematicBody2D" type="KinematicBody2D" index="0"]
 
-position = Vector2( 64, 64 )
+position = Vector2( -1.07007, -56.3183 )
 input_pickable = true
 collision_layer = 1
 collision_mask = 1
@@ -20,7 +20,13 @@ collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Pickable", "Transform", "collision" ]
 
-[node name="Cos" type="Node2D" parent="." index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+position = Vector2( 0.735077, 77.1453 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cos" type="Node2D" parent="." index="1"]
 
 position = Vector2( 0, 138.267 )
 script = ExtResource( 2 )
@@ -28,25 +34,20 @@ _sections_unfolded = [ "Angular", "Applied Forces", "Collision", "Transform", "V
 
 [node name="Sprite" type="Sprite" parent="Cos" index="0"]
 
-position = Vector2( -1.29413, -93.9108 )
+position = Vector2( 0, -93.9108 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, 30 )
 hframes = 3
+frame = 2
 _sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform", "Visibility", "Z Index" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+[node name="Cap" type="Sprite" parent="." index="2"]
 
-position = Vector2( 0.735077, 77.1453 )
-shape = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Sprite" type="Sprite" parent="." index="2"]
-
-position = Vector2( 0, 64 )
+position = Vector2( 0.036911, 0.465744 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
-hframes = 3
+hframes = 2
 _sections_unfolded = [ "Animation", "Transform" ]
 
 [connection signal="mouse_entered" from="." to="." method="_on_KinematicBody2D_mouse_entered"]

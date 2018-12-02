@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/GorditaSpritesCabeza.png-e2262721d8263986aaa486eb85d92326.stex"
+path="res://.import/CINTA CON SANGRE.png-69ba72a752339374d5f9c52bdfe5667a.stex"
 
 [deps]
 
-source_file="res://Sprites/Sacrificis/GorditaSpritesCabeza.png"
-dest_files=[ "res://.import/GorditaSpritesCabeza.png-e2262721d8263986aaa486eb85d92326.stex" ]
+source_file="res://Sprites/CINTA CON SANGRE.png"
+dest_files=[ "res://.import/CINTA CON SANGRE.png-69ba72a752339374d5f9c52bdfe5667a.stex" ]
 
 [params]
 

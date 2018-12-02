@@ -2,21 +2,21 @@
 
 [ext_resource path="res://Scenes/fabrica.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/FondoFabricaV4.jpg" type="Texture" id=2]
-[ext_resource path="res://Scenes/persona.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Sprites/licuador.png" type="Texture" id=4]
-[ext_resource path="res://Scripts/Tuberia.gd" type="Script" id=5]
-[ext_resource path="res://icon.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/ANIMACIÓN VALLA.png" type="Texture" id=7]
-
-[sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
-extents = Vector2( 256, 64 )
+[ext_resource path="res://Scripts/Tuberia.gd" type="Script" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/CINTA CON SANGRE.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/licuador.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/persona.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32, 32 )
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 256, 64 )
 
 [node name="Fabrica" type="Node2D" index="0"]
 
@@ -31,12 +31,44 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Persona Random" parent="." index="1" instance=ExtResource( 3 )]
+[node name="Tuberia_M" type="Area2D" parent="." index="1"]
 
-position = Vector2( 1856, 352 )
+position = Vector2( 1664, 128 )
+scale = Vector2( 4, 4 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 3 )
+_sections_unfolded = [ "Pause", "Pickable" ]
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Caldero" type="Area2D" parent="." index="2"]
+[node name="Sprite" type="Sprite" parent="Tuberia_M" index="0"]
 
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tuberia_M" index="1"]
+
+shape = SubResource( 2 )
+
+[node name="Position2D" type="Position2D" parent="Tuberia_M" index="2"]
+
+position = Vector2( -8, -56 )
+scale = Vector2( 0.25, 0.25 )
+
+[node name="Barra" type="Sprite" parent="." index="2"]
+
+position = Vector2( 960, 544 )
+texture = ExtResource( 5 )
+
+[node name="Caldero" type="Area2D" parent="." index="3"]
+
+editor/display_folded = true
 position = Vector2( 1664, 960 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -56,46 +88,12 @@ _sections_unfolded = [ "Transform" ]
 
 position = Vector2( -64, -96 )
 scale = Vector2( 0.15394, 0.147421 )
-texture = ExtResource( 4 )
+texture = ExtResource( 6 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Tuberia_M" type="Area2D" parent="." index="3"]
+[node name="Persona Random" parent="." index="4" instance=ExtResource( 7 )]
 
-position = Vector2( 1664, 128 )
-scale = Vector2( 4, 4 )
-input_pickable = false
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 5 )
-_sections_unfolded = [ "Pause", "Pickable" ]
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Tuberia_M" index="0"]
-
-texture = ExtResource( 6 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Tuberia_M" index="1"]
-
-shape = SubResource( 2 )
-
-[node name="Position2D" type="Position2D" parent="Tuberia_M" index="2"]
-
-position = Vector2( -8, -56 )
-scale = Vector2( 0.25, 0.25 )
-
-[node name="Barra" type="Sprite" parent="." index="4"]
-
-position = Vector2( 1216, 800 )
-texture = ExtResource( 7 )
-__meta__ = {
-"_edit_lock_": true
-}
+position = Vector2( 1856, 352 )
 
 [connection signal="body_entered" from="Caldero" to="." method="_on_Caldero_body_entered"]
 

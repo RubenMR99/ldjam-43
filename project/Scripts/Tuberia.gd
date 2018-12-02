@@ -6,7 +6,7 @@ var temps = 0
 const temps_entre_generar = 200
 
 func _physics_process(delta):
-	temps = temps + 1
+	#temps = temps + 1
 	if (temps >= temps_entre_generar and GlobalVar.contador_personas < GlobalVar.MAX_PERSONAS):
 		temps = 0
 		var pers_nova = PERSONA.instance()

@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/GorditoSpritesCabeza.png-c56cfb60f3b7b5ef05e6bff653e2d162.stex"
+path="res://.import/caps.png-a729d0900656a4b52882212a0410ebd7.stex"
 
 [deps]
 
-source_file="res://Sprites/Sacrificis/GorditoSpritesCabeza.png"
-dest_files=[ "res://.import/GorditoSpritesCabeza.png-c56cfb60f3b7b5ef05e6bff653e2d162.stex" ]
+source_file="res://Sprites/Sacrificis/caps.png"
+dest_files=[ "res://.import/caps.png-a729d0900656a4b52882212a0410ebd7.stex" ]
 
 [params]
 
