@@ -1,5 +1,7 @@
 extends Node
 
+var escut = preload("res://Scenes/Escut.tscn");
+
 func _ready():
 	$Camera.make_current();
 	update_HUD();
@@ -31,7 +33,24 @@ func _on_fieldButton_pressed():
 	$field.comproba_buttons();
 	GlobalVar.pos = "factory";
 
+func _activa_escut():
+	print("l");
+	var s = escut.instance();
+	s.position.x = 0 + GlobalVar.escut * 65;
+	GlobalVar.escut += 1;
+	s.position.y = 100;
+	$Camera/HUD/Cont.add_child(s);
+
+func _run_out_shield():
+	print("yay")
+	GlobalVar.escut -= 1;
+	for node in $Camera/HUD/Cont.get_children():
+		node.position.x -= 65;
+
 func _on_enemy_attacking():
+	print("x");
+
+func _on_incoming_damage():
 	print("o");
 	if GlobalVar.pos == "factory":
 		$field/vigila/anim.play("apareixer_vigila");
