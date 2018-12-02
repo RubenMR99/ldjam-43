@@ -5,7 +5,6 @@ var sprite_pompa = preload("res://Sprites/Field/escutimg.png");
 
 func _ready():
 	update_escuts();
-	pass
 
 func colocar(num):
 	_num = num;

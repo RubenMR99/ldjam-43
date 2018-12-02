@@ -5,7 +5,6 @@ var escut = preload("res://Scenes/Escut.tscn");
 func _ready():
 	$Camera.make_current();
 	update_HUD();
-	pass
 
 func update_HUD():
 	$Camera/HUD/Meat.value = GlobalVar.meat_rec;
@@ -66,8 +65,7 @@ func _on_enemy_attacking(damage):
 	update_HUD();
 
 func _on_incoming_damage():
-	if GlobalVar.pos == "factory":
-		$field/vigila/anim.play("apareixer_vigila");
+	$field/vigila/anim.play("apareixer_vigila");
 
 func _on_enemy_killed():
 	pass

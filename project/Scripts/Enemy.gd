@@ -8,14 +8,13 @@ var j = preload("res://Sprites/Enemy/Jutge.png");
 var p = preload("res://Sprites/Enemy/Poli.png");
 var m = preload("res://Sprites/Enemy/Mono.png");
 
-
 var _velocity = 0;
 var _tipus;
 var _vida = 0;
 var _vida_inicial = 0;
 
 func random_type():
-	var aux = randi()%3;
+	var aux = 2#randi()%3;
 	match aux:
 		0:
 			$Sprite.set_texture(j);
@@ -33,15 +32,29 @@ func _ready():
 	self.connect("damage_incoming", get_parent().get_parent(), "_on_incoming_attack");
 	self.connect("killed", get_parent().get_parent(), "_on_enemy_killed");
 	inicialitzar_nou_enemic();
-	pass
 
 func _process(delta):
 	$Carrega/ProgressBar.value += _velocity;
 	if($Carrega/ProgressBar.value == 90):
 		emit_signal("damage_incoming");
+		print("damage_incoming");
 	elif($Carrega/ProgressBar.value >= 100):
 		$Carrega/ProgressBar.value = 0;
-		emit_signal("damage", 1);
+		_atacar();
+
+func _atacar():
+	set_process(false);
+	match _tipus:
+		"mono":
+			$Sprite/animacio.play("attack_mono");
+			yield(get_tree().create_timer(0.3), "timeout");
+			$Coin.restart();
+			yield(get_tree().create_timer(0.7), "timeout");
+			$Sprite/animacio.play_backwards("attack_mono");
+			
+	
+	set_process(true);
+	emit_signal("damage", 1);
 
 func inicialitzar_nou_enemic():
 	$Carrega/ProgressBar.value = 0;

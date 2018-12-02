@@ -134,8 +134,8 @@ _sections_unfolded = [ "Rect", "Textures" ]
 [node name="vigila" type="Sprite" parent="." index="3"]
 
 visible = false
-self_modulate = Color( 0.929688, 0, 0, 1 )
-position = Vector2( -100, 215 )
+self_modulate = Color( 0.0231719, 0, 0, 1 )
+position = Vector2( 83, 215 )
 scale = Vector2( 1, 2 )
 z_index = 40
 texture = ExtResource( 8 )
