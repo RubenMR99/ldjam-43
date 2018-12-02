@@ -4,7 +4,7 @@
 [ext_resource path="res://Sprites/player/escutbase.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/player/escuttope.png" type="Texture" id=3]
 
-[node name="Escut" type="Node2D"]
+[node name="Escut" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 

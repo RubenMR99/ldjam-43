@@ -17,11 +17,11 @@ func _ready():
 
 func _process(delta):
 	$Carrega/ProgressBar.value += _velocity;
-	if($Carrega/ProgressBar.value == 75):
+	if($Carrega/ProgressBar.value == 90):
 		emit_signal("damage_incoming");
 	elif($Carrega/ProgressBar.value >= 100):
 		$Carrega/ProgressBar.value = 0;
-		emit_signal("damage");
+		emit_signal("damage", 1);
 
 func inicialitzar_nou_enemic():
 	_tipus = "jutge";
