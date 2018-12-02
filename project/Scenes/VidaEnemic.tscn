@@ -1,65 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/VidaEnemic.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
-
-[sub_resource type="StyleBoxFlat" id=1]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-bg_color = Color( 0.6, 0.6, 0.6, 1 )
-draw_center = true
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0, 0, 0, 1 )
-border_blend = false
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
-corner_detail = 8
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-shadow_color = Color( 0, 0, 0, 0.6 )
-shadow_size = 0
-anti_aliasing = true
-anti_aliasing_size = 1
-_sections_unfolded = [ "Border", "Border Width", "Corner Radius", "Expand Margin" ]
-
-[sub_resource type="StyleBoxFlat" id=2]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-bg_color = Color( 0.6, 0.6, 0.6, 1 )
-draw_center = false
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0, 0, 0, 1 )
-border_blend = false
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
-corner_detail = 8
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-shadow_color = Color( 0, 0, 0, 0.6 )
-shadow_size = 0
-anti_aliasing = true
-anti_aliasing_size = 1
-_sections_unfolded = [ "Border", "Border Width", "Corner Radius", "Expand Margin" ]
+[ext_resource path="res://Sprites/Barres/BARRA VIDA ROJA.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Barres/BARRA VIDA VERDE.png" type="Texture" id=3]
 
 [node name="VidaEnemic" type="Node2D"]
 
@@ -87,7 +30,6 @@ max_lines_visible = -1
 [node name="image_interior" type="Sprite" parent="." index="1"]
 
 modulate = Color( 1, 0, 0, 1 )
-scale = Vector2( 2.5, 0.25 )
 texture = ExtResource( 2 )
 centered = false
 _sections_unfolded = [ "Offset", "Transform", "Visibility" ]
@@ -97,7 +39,7 @@ _sections_unfolded = [ "Offset", "Transform", "Visibility" ]
 z_index = 10
 _sections_unfolded = [ "Z Index" ]
 
-[node name="one" type="ProgressBar" parent="Primera" index="0"]
+[node name="one" type="TextureProgress" parent="Primera" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -107,12 +49,10 @@ margin_right = 160.0
 margin_bottom = 16.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 0
+mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
-size_flags_vertical = 0
-custom_styles/fg = SubResource( 1 )
-custom_styles/bg = SubResource( 2 )
+size_flags_vertical = 1
 min_value = 0.0
 max_value = 100.0
 step = 1.0
@@ -120,7 +60,12 @@ page = 0.0
 value = 10.0
 exp_edit = false
 rounded = false
-percent_visible = true
-_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Pause", "Percent", "Rect", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_fonts", "custom_styles" ]
+texture_under = null
+texture_over = null
+texture_progress = ExtResource( 3 )
+radial_fill_degrees = 360.0
+radial_center_offset = Vector2( 0, 0 )
+nine_patch_stretch = false
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Pause", "Percent", "Rect", "Size Flags", "Textures", "Theme", "Visibility", "custom_colors", "custom_fonts", "custom_styles" ]
 
 

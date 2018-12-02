@@ -70,4 +70,4 @@ func _on_incoming_damage():
 		$field/vigila/anim.play("apareixer_vigila");
 
 func _on_enemy_killed():
-	$field/Enemy.inicialitzar_nou_enemic();
+	pass
