@@ -16,7 +16,7 @@ extents = Vector2( 256, 256 )
 custom_solver_bias = 0.0
 extents = Vector2( 32, 32 )
 
-[node name="Node" type="Node" index="0"]
+[node name="Fabrica" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -42,6 +42,7 @@ shape = SubResource( 1 )
 
 [node name="Tuberia" type="Area2D" parent="." index="2"]
 
+visible = false
 position = Vector2( 1280, 128 )
 scale = Vector2( 4, 4 )
 input_pickable = false
@@ -81,5 +82,7 @@ __meta__ = {
 }
 
 [connection signal="body_entered" from="Caldero" to="." method="_on_Caldero_body_entered"]
+
+[connection signal="body_exited" from="Caldero" to="." method="_on_Caldero_body_exited"]
 
 

@@ -2,7 +2,7 @@ extends Node
 
 # class member variables go here, for example:
 # var a = 2
-# var b = "textvar"
+var stop = false
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -15,5 +15,8 @@ func _process(delta):
 	pass
 
 func _on_Caldero_body_entered(body):
-	print(body)
-	body.eliminar();
+	body.entrada_caldero();
+
+
+func _on_Caldero_body_exited(body):
+	body.sortida_caldero();
