@@ -9,7 +9,7 @@ func _ready():
 	var nom_propi = str(self.name)
 	if (nom_propi == "Tuberia_M"):
 		tipus = "MEAT"
-	elif("Tuberia_B"):
+	elif(nom_propi == "Tuberia_B"):
 		tipus = "BLOOD"
 	else:
 		tipus = "FAT"

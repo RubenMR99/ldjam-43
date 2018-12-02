@@ -8,6 +8,10 @@ func _ready():
 	self.connect("shield", get_parent(), "_activa_escut");
 
 func comproba_buttons():
+#	print("BLOOD")
+#	print(GlobalVar.blood_rec)
+#	print("FAT")
+#	print(GlobalVar.fat_rec)
 	if(GlobalVar.blood_rec < 100):
 		$Buttons/T_attack.disabled = true;
 	else:

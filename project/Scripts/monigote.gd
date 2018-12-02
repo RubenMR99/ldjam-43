@@ -143,15 +143,16 @@ func eliminar():
 		print("MEAT")
 		print(GlobalVar.meat_rec)
 	elif (tipus == "BLOOD"):
-		GlobalVar.meat_rec += valor
+		GlobalVar.blood_rec += valor
 		print("BLOOD")
 		print(GlobalVar.blood_rec)
 	elif (tipus == "FAT"):
-		GlobalVar.meat_rec += valor
+		GlobalVar.fat_rec += valor
 		print("FAT")
 		print(GlobalVar.fat_rec)
 	GlobalVar.contador_personas -= 1
 	get_parent().stop = false;
 	get_parent().start_sang()
+	get_tree().get_root().get_node("Game").screen_shake(30)
 	get_parent().deixar_anar()
 	morir = true

@@ -101,6 +101,7 @@ func inicialitzar_nou_enemic():
 	$VidaEnemic.dibuixar(_vida);
 
 func atacar(damage):
+	yield(get_tree().create_timer(0.2), "timeout")
 	_vida -= damage;
 	$Sprite/animacio.play("hurt")
 	if _vida <= 0:
