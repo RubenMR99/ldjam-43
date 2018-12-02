@@ -56,12 +56,12 @@ func _physics_process(delta):
 			z_index = 0
 		else:
 			next_scale = scale_d
-			next_scale_cabezo = scale_d
+			next_scale_cabezo = Vector2(0.5,0.5)
 			z_index = 0
 	
 		if (asobre and clicant and es_pot_agafar):
 			agafar()
-			next_scale_cabezo = Vector2(1,1)
+			next_scale_cabezo = Vector2(0.5,0.5)
 		elif(asobre and clicant_ant):
 			deixat_anar = true
 		if (deixat_anar and not entra_deixar):
@@ -144,6 +144,9 @@ func eliminar():
 	elif (tipus == "BLOOD"):
 		GlobalVar.meat_rec += valor
 		print(GlobalVar.blood_rec)
+	elif (tipus == "FAT"):
+		GlobalVar.meat_rec += valor
+		print(GlobalVar.fat_rec)
 	GlobalVar.contador_personas -= 1
 	get_parent().stop = false;
 	get_parent().deixar_anar()
