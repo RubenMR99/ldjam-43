@@ -49,10 +49,10 @@ func _physics_process(delta):
 	pos_anterior = position
 	clicant = Input.is_action_pressed("click")
 	es_pot_agafar = get_parent().comp_agafar(self)
-	next_scale_cabezo = Vector2(1,1)
+	next_scale_cabezo = Vector2(0.5,0.5)
 	if (!morir):
 		if (asobre and !clicant_ant and es_pot_agafar):
-			next_scale_cabezo = scale_1
+			next_scale_cabezo = Vector2(1,1)
 			z_index = 0
 		else:
 			next_scale = scale_d
@@ -87,7 +87,7 @@ func _physics_process(delta):
 		position.x = lerp(position.x, 1632, 0.1);
 		z_index = 10
 		
-		if (scale.y == 0):
+		if (scale.y < 0.3):
 			queue_free()
 			get_parent().stop_sang()
 
@@ -140,15 +140,18 @@ func sortida_caldero():
 func eliminar():
 	if (tipus == "MEAT"):
 		GlobalVar.meat_rec += valor
+		print("MEAT")
 		print(GlobalVar.meat_rec)
 	elif (tipus == "BLOOD"):
 		GlobalVar.meat_rec += valor
+		print("BLOOD")
 		print(GlobalVar.blood_rec)
 	elif (tipus == "FAT"):
 		GlobalVar.meat_rec += valor
+		print("FAT")
 		print(GlobalVar.fat_rec)
 	GlobalVar.contador_personas -= 1
 	get_parent().stop = false;
-	get_parent().deixar_anar()
 	get_parent().start_sang()
+	get_parent().deixar_anar()
 	morir = true

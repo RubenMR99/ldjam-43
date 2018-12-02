@@ -19,10 +19,10 @@ func _ready():
 func _process(delta):
 	diferencia = global_position.x - pos_anterior.x
 	pos_anterior = global_position
-	if (diferencia > 2):
+	if (diferencia > 0):
 		rotacio_objectiu = int(deg2rad(diferencia)) % maxim_rota
 		$Sprite.rotation = lerp($Sprite.rotation, rotacio_objectiu, 0.3)
-	elif (diferencia < 2):
+	elif (diferencia < 0):
 		rotacio_objectiu = int(deg2rad(diferencia)) % maxim_rota
 		$Sprite.rotation = lerp($Sprite.rotation, rotacio_objectiu, 0.3)
 	else:
