@@ -6,6 +6,7 @@ var clicant = false
 var clicant_ant = false
 var deixat_anar = false
 var entra_deixar = false
+var es_pot_agafar = false
 
 var valor = 15;
 var tipus;
@@ -39,18 +40,20 @@ func _on_KinematicBody2D_mouse_exited():
 
 func _physics_process(delta):
 	clicant = Input.is_action_pressed("click")
-	if (asobre and !clicant_ant):
+	es_pot_agafar = get_parent().comp_agafar(self)
+	if (asobre and !clicant_ant and es_pot_agafar):
 		next_scale = scale_1
 	else:
 		next_scale = scale_d
 
-	if (asobre and clicant):
+	if (asobre and clicant and es_pot_agafar):
 		agafar()
+		print(self)
 	elif(asobre and clicant_ant):
 		deixat_anar = true
 	if (deixat_anar and not entra_deixar):
 		deixar_anar()
-	elif(entra_deixar and not clicant):
+	elif(entra_deixar and not clicant and deixat_anar):
 		eliminar()
 	
 	scale.y = lerp(scale.y, next_scale.y, 0.2);
@@ -69,7 +72,6 @@ func guia(posicio_actual):
 			stage = 1
 	elif (stage == 1):
 		posicio_actual.x -= 2
-		print(posicio_actual)
 		if posicio_actual.x <= p_2.x:
 			stage = 2
 	elif (stage == 2):
@@ -86,6 +88,7 @@ func guia(posicio_actual):
 	return posicio_actual
 
 func agafar():
+	get_parent().agafar(self)
 	movent = false;
 	position = get_global_mouse_position()
 	next_scale = scale_2
@@ -98,6 +101,7 @@ func deixar_anar():
 		position = pos_inicial
 		deixat_anar = false;
 		movent = true
+		get_parent().deixar_anar()
 
 func entrada_caldero():
 	entra_deixar = true
@@ -109,6 +113,10 @@ func eliminar():
 	if (tipus == "MEAT"):
 		GlobalVar.meat_rec += valor
 		print(GlobalVar.meat_rec)
+	elif (tipus == "BLOOD"):
+		GlobalVar.meat_rec += valor
+		print(GlobalVar.blood_rec)
 	GlobalVar.contador_personas -= 1
 	get_parent().stop = false;
+	get_parent().deixar_anar()
 	queue_free()

@@ -2,11 +2,13 @@
 
 importer="texture"
 type="StreamTexture"
-valid=false
+path="res://.import/ANIMACIÓN VALLA.png-12f6ac845c056c85985dad2058c202df.stex"
 
 [deps]
 
-source_file="res://Sprites/fabrica.png"
+source_file="res://Sprites/ANIMACIÓN VALLA.png"
+dest_files=[ "res://.import/ANIMACIÓN VALLA.png-12f6ac845c056c85985dad2058c202df.stex" ]
+
 [params]
 
 compress/mode=0

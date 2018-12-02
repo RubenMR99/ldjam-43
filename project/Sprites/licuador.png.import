@@ -2,11 +2,13 @@
 
 importer="texture"
 type="StreamTexture"
-valid=false
+path="res://.import/licuador.png-1fa0e0b8dfa6098e915cffa2b4330678.stex"
 
 [deps]
 
-source_file="res://Sprites/fabrica.png"
+source_file="res://Sprites/licuador.png"
+dest_files=[ "res://.import/licuador.png-1fa0e0b8dfa6098e915cffa2b4330678.stex" ]
+
 [params]
 
 compress/mode=0

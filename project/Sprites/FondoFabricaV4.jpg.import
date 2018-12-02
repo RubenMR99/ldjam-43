@@ -2,11 +2,13 @@
 
 importer="texture"
 type="StreamTexture"
-valid=false
+path="res://.import/FondoFabricaV4.jpg-aac2674874293baecc9b26a7a8d342a9.stex"
 
 [deps]
 
-source_file="res://Sprites/fabrica.png"
+source_file="res://Sprites/FondoFabricaV4.jpg"
+dest_files=[ "res://.import/FondoFabricaV4.jpg-aac2674874293baecc9b26a7a8d342a9.stex" ]
+
 [params]
 
 compress/mode=0
