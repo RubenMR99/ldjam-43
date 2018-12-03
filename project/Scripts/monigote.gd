@@ -10,7 +10,7 @@ var es_pot_agafar = false
 var morir = false
 var velocitat = 4
 
-var valor = 15;
+var valor = 25;
 var tipus;
 var stage = 0;
 
@@ -38,8 +38,13 @@ func asignar(tipus_n):
 	tipus = tipus_n
 	if (tipus == "FAT"):
 		$Cap.set_texture(load("res://Sprites/Sacrificis/caps.png"))
-	else:
+		$Cos/Sprite.set_texture(load("res://Sprites/Sacrificis/GorditaSpritesCuerpo.png"))
+	elif (tipus == "BLOOD"):
+		$Cap.set_texture(load("res://Sprites/Sacrificis/caps_musculitos.png"))
 		$Cos/Sprite.set_texture(load("res://Sprites/Sacrificis/MusculitosSpritesCuerpo.png"))
+	else:
+		$Cap.set_texture(load("res://Sprites/Sacrificis/caps_carn.png"))
+		$Cos/Sprite.set_texture(load("res://Sprites/Sacrificis/CarneSpritesHomeDonaCuerpo.png"))
 
 func _on_KinematicBody2D_mouse_entered():
 	asobre = true
@@ -157,22 +162,21 @@ func sortida_caldero():
 
 func eliminar():
 	if (tipus == "MEAT"):
-#		GlobalVar.meat_rec += valor
-#		print("MEAT")
-#		print(GlobalVar.meat_rec)
+		GlobalVar.blood_rec += valor * 0.5
+		GlobalVar.fat_rec += valor * 0.5
 		pass
 	elif (tipus == "BLOOD"):
 		GlobalVar.blood_rec += valor
-		print("BLOOD")
-		print(GlobalVar.blood_rec)
+#		print("BLOOD")
+#		print(GlobalVar.blood_rec)
 	elif (tipus == "FAT"):
 		GlobalVar.fat_rec += valor
-		print("FAT")
-		print(GlobalVar.fat_rec)
+#		print("FAT")
+#		print(GlobalVar.fat_rec)
 	GlobalVar.contador_personas -= 1
 	if (stage == 5):
 		get_parent().stop = false;
 	get_parent().start_sang()
-	get_tree().get_root().get_node("Game").screen_shake(30)
+	get_tree().get_root().get_node("Game").screen_shake(5)
 	get_parent().deixar_anar()
 	morir = true

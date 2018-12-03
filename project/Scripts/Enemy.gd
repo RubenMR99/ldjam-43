@@ -12,7 +12,7 @@ var x1 = preload("res://Sprites/Enemy/DAÑO CORA x1.png");
 var x2 = preload("res://Sprites/Enemy/DAÑO CORA x2.png");
 var x3 = preload("res://Sprites/Enemy/DAÑO CORA X3.png");
 
-var _velocity = 0;
+var _velocity = 0.01;
 var _tipus;
 var _vida = 0;
 var _vida_inicial = 0;

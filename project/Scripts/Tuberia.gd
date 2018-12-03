@@ -16,9 +16,9 @@ func _ready():
 		tipus = "FAT"
 
 func _physics_process(delta):
-	var num_rand = randi() % 10000
+	var num_rand = randi() % 1000
 	print(num_rand)
-	if (num_rand < 20 and GlobalVar.contador_personas < GlobalVar.MAX_PERSONAS):
+	if (num_rand < 3 and GlobalVar.contador_personas < GlobalVar.MAX_PERSONAS):
 		var pers_nova = PERSONA.instance()
 		pers_nova.asignar(tipus)
 		GlobalVar.contador_personas += 1
