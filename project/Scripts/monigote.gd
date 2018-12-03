@@ -173,5 +173,6 @@ func eliminar():
 	if (stage == 5):
 		get_parent().stop = false;
 	get_parent().start_sang()
+	get_tree().get_root().get_node("Game").screen_shake(30)
 	get_parent().deixar_anar()
 	morir = true

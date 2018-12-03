@@ -396,7 +396,7 @@ _sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Trans
 [node name="Next_damage" type="Sprite" parent="." index="7"]
 
 position = Vector2( -40.9973, -350.62 )
-scale = Vector2( 0.993873, 0.993873 )
+scale = Vector2( 0.876669, 0.876669 )
 texture = ExtResource( 7 )
 _sections_unfolded = [ "Transform" ]
 

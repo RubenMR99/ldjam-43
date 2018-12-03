@@ -9,13 +9,13 @@
 [ext_resource path="res://Sprites/Barres/BARRAROJA.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/Barres/BARRAAMARILLALLENA.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/Barres/ENGRANAJES BARRAS x70.png" type="Texture" id=9]
-[ext_resource path="res://Scripts/Buttons_desplac.gd" type="Script" id=10]
-[ext_resource path="res://Sprites/Boton/boton 1.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/Boton/boton2.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/Boton/boton3.png" type="Texture" id=13]
-[ext_resource path="res://Sprites/Boton/boton4.png" type="Texture" id=14]
-[ext_resource path="res://Sounds/ost2.ogg" type="AudioStream" id=15]
-[ext_resource path="res://Sprites/gameover.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/gameover.png" type="Texture" id=10]
+[ext_resource path="res://Scripts/Buttons_desplac.gd" type="Script" id=11]
+[ext_resource path="res://Sprites/Boton/boton 1.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Boton/boton2.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Boton/boton3.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/Boton/boton4.png" type="Texture" id=15]
+[ext_resource path="res://Sounds/ost2.ogg" type="AudioStream" id=16]
 
 [sub_resource type="Animation" id=1]
 
@@ -145,6 +145,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="HUD" type="Node2D" parent="Camera" index="0"]
 
+editor/display_folded = true
 position = Vector2( 88, 86 )
 scale = Vector2( 1.5, 1.5 )
 z_index = 10
@@ -238,6 +239,14 @@ anims/moure_dreta = SubResource( 1 )
 anims/moure_esquerra = SubResource( 2 )
 blend_times = [  ]
 
+[node name="GameOver" type="Sprite" parent="Camera" index="2"]
+
+visible = false
+z_index = 4096
+texture = ExtResource( 10 )
+centered = false
+_sections_unfolded = [ "Offset", "Transform", "Z Index" ]
+
 [node name="Buttons" type="Area2D" parent="." index="4"]
 
 editor/display_folded = true
@@ -250,7 +259,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 10 )
+script = ExtResource( 11 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="fieldButton" type="TextureButton" parent="Buttons" index="0"]
@@ -274,9 +283,9 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 11 )
-texture_pressed = ExtResource( 12 )
-texture_disabled = ExtResource( 12 )
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+texture_disabled = ExtResource( 13 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="factoryButton" type="TextureButton" parent="Buttons" index="1"]
@@ -301,9 +310,9 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 13 )
-texture_pressed = ExtResource( 14 )
-texture_disabled = ExtResource( 14 )
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 15 )
+texture_disabled = ExtResource( 15 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Buttons" index="2"]
@@ -324,19 +333,12 @@ blend_times = [  ]
 
 [node name="OST" type="AudioStreamPlayer" parent="." index="5"]
 
-stream = ExtResource( 15 )
+stream = ExtResource( 16 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = true
 mix_target = 0
 bus = "Master"
-
-[node name="GameOver" type="Sprite" parent="." index="6"]
-
-z_index = 4096
-texture = ExtResource( 16 )
-centered = false
-_sections_unfolded = [ "Offset", "Transform", "Z Index" ]
 
 [connection signal="mouse_entered" from="Buttons" to="Buttons" method="_on_Buttons_mouse_entered"]
 

@@ -16,9 +16,7 @@ func update_HUD():
 	$field/pompa.colocar(GlobalVar.escut);
 
 func _process(delta):
-	GlobalVar.blood_rec += 0.5;
-	GlobalVar.fat_rec += 0.5;
-	update_HUD();
+	print(GlobalVar.vida)
 	if Input.is_action_pressed("ui_up"):
 		screen_shake(0.5);
 	
@@ -29,9 +27,10 @@ func _process(delta):
 			rand_range(-1.0, 1.0) * shake_amount 
 		))
 		shake_amount -= 0.1;
+	update_HUD();
 	
 	if GlobalVar.vida <= 0:
-		pass
+		$Camera/GameOver.visible = true;
 
 func _on_factoryButton_pressed():
 	$Camera/anim.play("moure_dreta");
