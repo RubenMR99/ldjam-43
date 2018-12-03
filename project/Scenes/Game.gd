@@ -6,6 +6,7 @@ var shake_amount = 0;
 
 func _ready():
 	$Camera.make_current();
+	$Camera/GameOver.visible = false;
 	$Player/Sprite.flip_h = true;
 	update_HUD();
 
