@@ -101,7 +101,7 @@ tracks/1/keys = {
 "values": [ Vector2( -337, 0 ), Vector2( -337, -225 ) ]
 }
 
-[node name="Game" type="Node" index="0"]
+[node name="Game" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -329,7 +329,7 @@ volume_db = 0.0
 pitch_scale = 1.0
 autoplay = true
 mix_target = 0
-bus = "Music"
+bus = "Master"
 
 [node name="GameOver" type="Sprite" parent="." index="6"]
 
